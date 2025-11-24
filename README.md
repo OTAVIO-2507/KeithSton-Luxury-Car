@@ -2,7 +2,7 @@
 Um carrossel de carros com design escuro e vibrante, construído com HTML, CSS e JavaScript puro. O projeto apresenta transições animadas e navegação baseada em classes e variáveis CSS.
 
 ## 🌐 Visualize o projeto:
-Ver Projeto Online (Adicione o link do seu projeto hospedado)
+**[Ver Projeto Online]()**
 
 ## ✨ Funcionalidades Principais
 - Design Responsivo: Layout adaptável a diferentes tamanhos de tela (embora o foco principal seja o desktop).
