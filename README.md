@@ -23,7 +23,7 @@ Um carrossel de carros com design escuro e vibrante, construído com HTML, CSS e
 - **Lógica do Carrossel:** Implementação da navegação prev e next com lógica de loop.
 - **Manipulação de Estilo:** Atualização da variável CSS (--calculation) para definir a animação.
 
-🚀 Como Começar
+## 🚀 Como Começar
 1. Clone o repositório: Bash git clone URL_DO_SEU_REPOSITORIO
 2. Abra os arquivos:
 3. Abra o arquivo `index.html` no seu navegador.
