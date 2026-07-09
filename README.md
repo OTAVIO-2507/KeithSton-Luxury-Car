@@ -1,30 +1,64 @@
-# 🏎️ Carrossel de Carros - Slider Interativo
-Um carrossel de carros com design escuro e vibrante, construído com HTML, CSS e JavaScript puro. O projeto apresenta transições animadas e navegação baseada em classes e variáveis CSS.
+# KeithSton Luxury Car — Carrossel Interativo
 
-## 🌐 Visualize o projeto:
-**[Ver Projeto Online](https://otavio-2507.github.io/KeithSton-Luxury-Car/)**
+Carrossel de carros de luxo com design escuro e transições direcionais animadas, construído com HTML, CSS moderno (aninhamento e variáveis) e JavaScript puro, sem bibliotecas de slider.
 
-## ✨ Funcionalidades Principais
-- Design Responsivo: Layout adaptável a diferentes tamanhos de tela (embora o foco principal seja o desktop).
-- Transições Direcionais: Uso de variáveis CSS (--calculation) para controlar a direção da animação de entrada e saída dos slides.
-- Navegação por Setas: Botões intuitivos para avançar e retroceder os slides.
-- Loop Contínuo: A navegação de slide retorna ao início/fim (loop infinito).
-- Indicadores Visuais: Número do slide e barras de navegação atualizadas dinamicamente.
-- Efeitos Visuais: Animações em cascata para os elementos de conteúdo do carro e efeitos de hover nos botões.
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
-## 🛠️ Tecnologias Utilizadas
-- **HTML5:** Estrutura semântica do carrossel e dos elementos de navegação.
-- **CSS3:** CSS Aninhado (&): Utilizado para organização do código e escopo de estilos.
-- **Grid e Flexbox:** Para posicionamento e alinhamento do cabeçalho e conteúdo.
-- **Variáveis CSS (--calculation):** Essencial para controlar a direção das transições de slide.
-- **Transições e Transformações:** Para criar as animações suaves e direcionais.
-- **JavaScript (Puro):**
-- **Manipulação de DOM:** Seleção e manipulação de classes para controle do estado ativo dos slides e indicadores.
-- **Lógica do Carrossel:** Implementação da navegação prev e next com lógica de loop.
-- **Manipulação de Estilo:** Atualização da variável CSS (--calculation) para definir a animação.
+[![Demonstração online](https://img.shields.io/badge/demonstra%C3%A7%C3%A3o-online-2EA44F?style=for-the-badge)](https://otavio-2507.github.io/KeithSton-Luxury-Car/)
 
-## 🚀 Como Começar
-1. Clone o repositório: Bash git clone URL_DO_SEU_REPOSITORIO
-2. Abra os arquivos:
-3. Abra o arquivo `index.html` no seu navegador.
-4. Configuração: Não é necessária configuração adicional ou instalação de dependências.
+[![Prévia do carrossel](docs/preview.webp)](https://otavio-2507.github.io/KeithSton-Luxury-Car/)
+
+## Visão geral
+
+O projeto implementa um slider completo do zero, com atenção especial à direção das transições: uma variável CSS (`--calculation`) controla se os elementos entram pela esquerda ou pela direita conforme o sentido da navegação. O conteúdo de cada carro entra em cascata, e o controle de estado é feito apenas com classes e manipulação de DOM, demonstrando que um carrossel sofisticado não exige biblioteca externa.
+
+## Funcionalidades
+
+- Navegação por setas com loop contínuo (do último slide retorna ao primeiro)
+- Transições direcionais controladas por variável CSS conforme o sentido da navegação
+- Animações em cascata para título, descrição e detalhes de cada carro
+- Indicadores visuais de posição atualizados dinamicamente
+- Efeitos de hover nos botões de navegação
+- Tipografia de impacto com League Gothic e Poppins
+
+## Tecnologias
+
+| Tecnologia | Aplicação no projeto |
+| --- | --- |
+| HTML5 | Estrutura do carrossel e da navegação |
+| CSS3 | Aninhamento, variáveis (`--calculation`), grid, flexbox e transições |
+| JavaScript (ES6+) | Controle de estado dos slides e manipulação de classes |
+| Font Awesome | Ícones das setas de navegação |
+| Google Fonts | Tipografia (League Gothic, Poppins) |
+
+## Como executar
+
+```bash
+git clone https://github.com/OTAVIO-2507/KeithSton-Luxury-Car.git
+cd KeithSton-Luxury-Car
+```
+
+Abra o arquivo `index.html` no navegador. As dependências são carregadas via CDN.
+
+## Estrutura do projeto
+
+```
+KeithSton-Luxury-Car/
+├── index.html              Página do carrossel
+├── src/
+│   ├── javascript/
+│   │   └── script.js       Navegação e controle de slides
+│   ├── style/
+│   │   └── styles.css      Transições, variáveis e layout
+│   └── img/                Imagens dos carros e logotipos
+└── docs/
+    └── preview.webp        Imagem de prévia do README
+```
+
+## Autor
+
+**Otávio Oliveira** — Desenvolvedor Full Stack
+
+[GitHub](https://github.com/OTAVIO-2507) · [Portfólio](https://otavio-2507.github.io/Portifolio-v2/) · [E-mail](mailto:56otavio@gmail.com)
