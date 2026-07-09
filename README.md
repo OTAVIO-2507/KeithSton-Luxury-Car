@@ -8,8 +8,6 @@ Carrossel de carros de luxo com design escuro e transições direcionais animada
 
 [![Demonstração online](https://img.shields.io/badge/demonstra%C3%A7%C3%A3o-online-2EA44F?style=for-the-badge)](https://otavio-2507.github.io/KeithSton-Luxury-Car/)
 
-[![Prévia do carrossel](docs/preview.webp)](https://otavio-2507.github.io/KeithSton-Luxury-Car/)
-
 ## Visão geral
 
 O projeto implementa um slider completo do zero, com atenção especial à direção das transições: uma variável CSS (`--calculation`) controla se os elementos entram pela esquerda ou pela direita conforme o sentido da navegação. O conteúdo de cada carro entra em cascata, e o controle de estado é feito apenas com classes e manipulação de DOM, demonstrando que um carrossel sofisticado não exige biblioteca externa.
@@ -47,14 +45,12 @@ Abra o arquivo `index.html` no navegador. As dependências são carregadas via C
 ```
 KeithSton-Luxury-Car/
 ├── index.html              Página do carrossel
-├── src/
-│   ├── javascript/
-│   │   └── script.js       Navegação e controle de slides
-│   ├── style/
-│   │   └── styles.css      Transições, variáveis e layout
-│   └── img/                Imagens dos carros e logotipos
-└── docs/
-    └── preview.webp        Imagem de prévia do README
+└── src/
+    ├── javascript/
+    │   └── script.js       Navegação e controle de slides
+    ├── style/
+    │   └── styles.css      Transições, variáveis e layout
+    └── img/                Imagens dos carros e logotipos
 ```
 
 ## Autor
