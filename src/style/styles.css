@@ -12,7 +12,7 @@
 body{
     background-color: #000000; /* Define a cor de fundo como preto */
     color: #ffffff; /* Define a cor do texto padrão como branco */
-    font: 16px; /* Define o tamanho da fonte padrão como 16px */
+    font-size: 16px; /* Define o tamanho da fonte padrão como 16px */
     overflow: hidden; /* Esconde qualquer conteúdo que exceda as dimensões da viewport, prevenindo barras de rolagem indesejadas */
 }
 
@@ -172,11 +172,9 @@ section{
         
         /* Estilo Geral para os Botões de Seta */
         & button{
-            top: 60%;
             width: 60px;
             height: 60px;
             border-radius: 50%; /* Transforma em círculo */
-            border: none;
             cursor: pointer;
             background-color: #fff;
             text-align: center;
@@ -261,9 +259,14 @@ section{
 
         & .item{
             /* Move os slides para fora da tela (para a direita, pois --calculation é 1) */
-            transform: translateX(calc(100vw * var(--calculation))); 
+            transform: translateX(calc(100vw * var(--calculation)));
             transition: 0.5; /* Transição de 0.5 segundos (shorthand para transition-duration) */
             opacity: 0; /* Torna os slides inativos invisíveis */
+            /* Só 'opacity: 0' esconde o slide da vista, mas o botão "Saiba mais" dele
+               continua no fluxo de foco: navegando por Tab o usuário cai em botões
+               invisíveis e fora da tela. 'visibility' tira o slide inativo do
+               tab order sem alterar nada visualmente. */
+            visibility: hidden;
 
 
             /* Transições para a imagem do carro no slide inativo */
@@ -307,6 +310,7 @@ section{
             transform: translate(0); /* Traz o slide para a posição inicial (visível) */
             transition: 0.5s;
             opacity: 1; /* Torna o slide visível */
+            visibility: visible; /* Devolve o slide ativo ao tab order */
 
                 /* Rotação da imagem no slide ativo */
                 & .car-img{

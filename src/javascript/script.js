@@ -57,9 +57,9 @@ function setSlider(){
     // Adiciona a classe 'active' ao novo indicador correspondente ao índice 'active'.
     dots[active].classList.add('active')
 
-    // Atualiza o número do slide visível.
-    // O '0' + (active + 1) garante o formato "01", "02", etc.
-    indicators.querySelector('.number').innerHTML = '0' + (active + 1)
+    // Atualiza o número do slide visível, sempre com dois dígitos ("01", "02", ...).
+    // Concatenar '0' na mão só funciona até 9 slides: no décimo sairia "010".
+    indicators.querySelector('.number').textContent = String(active + 1).padStart(2, '0')
 }
 
 
@@ -72,29 +72,35 @@ function setSlider(){
 // 'direction' vale 1 para AVANÇAR (o slide entra pela direita)
 // e -1 para VOLTAR (o slide entra pela esquerda).
 function moveSlider(direction){
-    // Define a variável CSS '--calculation', que no CSS decide de que lado
-    // os slides inativos ficam estacionados fora da tela.
-    list.style.setProperty('--calculation', direction)
-
-    // Força o navegador a recalcular o layout AGORA, antes de trocar o slide ativo.
-    // Sem esta linha as duas mudanças (variável + classe) aconteceriam no mesmo ciclo,
-    // e o navegador só enxergaria a posição ANTIGA como ponto de partida da transição.
-    // Resultado: ao inverter a direção, o primeiro slide entrava pelo lado errado.
-    void list.offsetWidth
-
-    // Calcula o novo índice ativo, com loop contínuo nas duas pontas:
+    // Descobre qual slide vai entrar, com loop contínuo nas duas pontas:
     // ao passar do último volta ao primeiro, e ao passar do primeiro vai para o último.
+    let nextActive
     if(direction === 1){
-        active = active + 1 > lastPosition ? firstPosition : active + 1
+        nextActive = active + 1 > lastPosition ? firstPosition : active + 1
     } else {
-        active = active - 1 < firstPosition ? lastPosition : active - 1
+        nextActive = active - 1 < firstPosition ? lastPosition : active - 1
     }
+
+    let incoming = items[nextActive]
+
+    // Estaciona o slide que vai entrar do lado certo ANTES de ele virar o ativo.
+    // Sem isso, a variável CSS e a classe mudariam no mesmo ciclo e o navegador
+    // usaria a posição ANTIGA como ponto de partida da transição - por isso, ao
+    // inverter o sentido, o primeiro slide entrava pelo lado errado.
+    // A transição fica desligada só durante o reposicionamento, para que esse
+    // "pulo" nunca seja animado, independente do que o CSS defina para .item.
+    incoming.style.transition = 'none'
+    list.style.setProperty('--calculation', direction)
+    void incoming.offsetWidth // força o recálculo agora, aplicando a nova posição
+    incoming.style.transition = '' // devolve a transição do CSS, para a entrada animar
+
+    active = nextActive
 
     // Executa a função de limpeza e atualização dos indicadores.
     setSlider()
 
     // Adiciona a classe 'active' ao novo slide, disparando as animações no CSS.
-    items[active].classList.add('active')
+    incoming.classList.add('active')
 }
 
 // Lógica para o botão PRÓXIMO
