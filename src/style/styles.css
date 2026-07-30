@@ -157,9 +157,10 @@ section{
         top: 50%;
         left: 50%;
         /* Centraliza as setas horizontalmente e ajusta verticalmente */
-        transform: translate(-50%, -25px); 
+        transform: translate(-50%, -25px);
         display: flex;
         justify-content: space-between; /* Coloca uma seta em cada extremidade */
+        z-index: 2; /* Mantém as setas acima dos slides e dos indicadores, garantindo o clique */
 
 
         /* Ajuste específico para a primeira seta (botão anterior) */
@@ -214,6 +215,11 @@ section{
         flex-direction: column;
         justify-content: end; /* Alinha os itens ao final do container */
         gap: 15px;
+        /* Este bloco é uma caixa invisível de 90vw x 200px que começa no meio da tela e
+           cobre a metade de baixo das setas. Como ele vem depois de .arrows no HTML,
+           ficava por cima e engolia o hover/clique. Nada aqui é clicável, então
+           deixamos o ponteiro atravessar direto para os botões. */
+        pointer-events: none;
 
         /* Número do Slide */
         & .number{
@@ -232,15 +238,15 @@ section{
             & li{
                 width: 50px;
                 height: 5px;
-                background-color: #beff1b; /* Cor da barra inativa */
+                background-color: #ffffff; /* Cor da barra inativa */
                 border-radius: 5px;
                 transition: 0.5s;
-                
+
             }
 
             /* Estilo para o Indicador Ativo */
             & .active{
-                background-color: #ffffff; /* Muda para branco quando o slide está ativo */
+                background-color: #beff1b; /* Muda para verde quando o slide está ativo */
             }
         }
     }

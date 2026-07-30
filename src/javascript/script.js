@@ -68,36 +68,37 @@ function setSlider(){
 //    Implementa as ações ao clicar nos botões.
 // =========================================================
 
-// Lógica para o botão PRÓXIMO
-nextButton.onclick = () => {
-    // Define a variável CSS '--calculation' como 1.
-    // No CSS, isso move os elementos para a esquerda (entram da direita).
-    list.style.setProperty('--calculation', 1) 
-    
-    // Calcula o próximo índice ativo (com loop contínuo - vai do último para o primeiro).
-    // Se o próximo índice for maior que o último, 'active' volta a ser 0. Senão, incrementa 1.
-    active = active + 1 > lastPosition ? 0 : active + 1
-    
+// Move o slider em uma direção.
+// 'direction' vale 1 para AVANÇAR (o slide entra pela direita)
+// e -1 para VOLTAR (o slide entra pela esquerda).
+function moveSlider(direction){
+    // Define a variável CSS '--calculation', que no CSS decide de que lado
+    // os slides inativos ficam estacionados fora da tela.
+    list.style.setProperty('--calculation', direction)
+
+    // Força o navegador a recalcular o layout AGORA, antes de trocar o slide ativo.
+    // Sem esta linha as duas mudanças (variável + classe) aconteceriam no mesmo ciclo,
+    // e o navegador só enxergaria a posição ANTIGA como ponto de partida da transição.
+    // Resultado: ao inverter a direção, o primeiro slide entrava pelo lado errado.
+    void list.offsetWidth
+
+    // Calcula o novo índice ativo, com loop contínuo nas duas pontas:
+    // ao passar do último volta ao primeiro, e ao passar do primeiro vai para o último.
+    if(direction === 1){
+        active = active + 1 > lastPosition ? firstPosition : active + 1
+    } else {
+        active = active - 1 < firstPosition ? lastPosition : active - 1
+    }
+
     // Executa a função de limpeza e atualização dos indicadores.
-    setSlider() 
-    
+    setSlider()
+
     // Adiciona a classe 'active' ao novo slide, disparando as animações no CSS.
     items[active].classList.add('active')
 }
 
+// Lógica para o botão PRÓXIMO
+nextButton.onclick = () => moveSlider(1)
+
 // Lógica para o botão ANTERIOR
-prevButton.onclick = () => {
-    // Define a variável CSS '--calculation' como -1.
-    // No CSS, isso move os elementos para a direita (entram da esquerda).
-    list.style.setProperty('--calculation', -1) 
-    
-    // Calcula o índice ativo anterior (com loop contínuo - vai do primeiro para o último).
-    // Se o próximo índice for menor que o primeiro (0), 'active' volta a ser o último índice. Senão, decrementa 1.
-    active = active - 1 < firstPosition ? lastPosition : active - 1
-    
-    // Executa a função de limpeza e atualização dos indicadores.
-    setSlider() 
-    
-    // Adiciona a classe 'active' ao novo slide, disparando as animações no CSS.
-    items[active].classList.add('active')
-}
+prevButton.onclick = () => moveSlider(-1)
