@@ -225,17 +225,22 @@ section{
 
         /* Número do Slide */
         & .number{
-            font-size: 5em;
+            font-size: 9em;
             font-family: "League Gothic", sans-serif;
         }
 
         /* Lista das Barras de Indicação */
         & ul{
+            /* Sem isto, o position:absolute + left:81% + transform da regra
+               genérica 'ul' (lá embaixo, pensada pro menu de redes sociais)
+               também atinge esta lista. O padding-right:152% era um valor
+               calibrado a mão pra compensar aquilo com exatamente 3 <li>;
+               com 5, a conta muda e as bolinhas saem da tela. */
+            position: static;
+            transform: none;
             display: flex;
             gap: 10px;
             padding-top: 1px;
-            /* Valor de padding irrealista - provavelmente um erro ou um ajuste para alinhamento */
-            padding-right: 152%; 
 
             & li{
                 width: 50px;
@@ -401,7 +406,7 @@ ul li a:hover:before {
 
 /* Cores específicas para cada botão de rede social */
 ul li:nth-child(1) a:before{
-    background: #3b5999; /* Cor do Facebook */
+    background: #25d366; /* Cor do WhatsApp */
 }
 
 ul li:nth-child(2) a:before{
@@ -413,7 +418,7 @@ ul li:nth-child(3) a:before {
 }
 
 ul li:nth-child(4) a:before {
-    background: #dd4b39; /* Cor do Google+/YouTube/Gmail */
+    background: #dd4b39; /* Cor do Gmail */
 }
 
 
@@ -488,14 +493,6 @@ ul li:nth-child(4) a:before {
 
             & .number{
                 font-size: clamp(3rem, 7vw, 5em);
-            }
-
-            /* Mesmo motivo do .menus: fora do posicionamento absoluto herdado,
-               o padding-right: 152% que compensava aquilo deixa de ser necessário. */
-            & ul{
-                position: static;
-                transform: none;
-                padding-right: 0;
             }
         }
     }
