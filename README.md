@@ -1,6 +1,6 @@
 <div align="center">
 
-# KeithSton Luxury Car — Carrossel Interativo
+# KeithSton Luxury Car
 
 Carrossel de carros de luxo com design escuro e transições direcionais animadas, construído com HTML, CSS moderno (aninhamento e variáveis) e JavaScript puro, sem bibliotecas de slider.
 
