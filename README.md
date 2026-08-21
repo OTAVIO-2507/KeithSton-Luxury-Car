@@ -8,7 +8,9 @@ Carrossel de carros de luxo com design escuro e transições direcionais animada
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
 
-[![Demonstração online](https://img.shields.io/badge/demonstra%C3%A7%C3%A3o-online-2EA44F?style=flat-square)](https://otavio-2507.github.io/KeithSton-Luxury-Car/)
+![Prévia do projeto](src/img/preview.jpg)
+
+**[Ver Projeto](https://otavio-2507.github.io/KeithSton-Luxury-Car/)**
 
 </div>
 
@@ -24,6 +26,18 @@ O projeto implementa um slider completo do zero, com atenção especial à dire�
 - Indicadores visuais de posição atualizados dinamicamente
 - Efeitos de hover nos botões de navegação
 - Tipografia de impacto com League Gothic e Poppins
+
+## Decisões de projeto
+
+Algumas escolhas que não são óbvias pelo código:
+
+**A direção da transição é resolvida antes do slide virar ativo.** O slide que vai entrar é estacionado do lado certo com a transição desligada, o navegador é forçado a recalcular o layout (`void incoming.offsetWidth`) e só então a classe `active` entra. Sem esse passo, a variável CSS `--calculation` e a classe mudariam no mesmo ciclo, e o navegador tomaria a posição antiga como ponto de partida — era por isso que, ao inverter o sentido, o primeiro slide entrava pelo lado errado. Desligar a transição durante o reposicionamento garante que o salto nunca seja animado, independente do que o CSS defina para `.item`.
+
+**O contador usa `padStart`, não concatenação.** Grudar um `'0'` na frente do índice funciona até nove slides; no décimo o indicador mostraria `010`. `String(active + 1).padStart(2, '0')` sobrevive ao crescimento da lista.
+
+**`100svh` logo depois de `100vh`.** No celular, `100vh` conta a barra de endereço mesmo quando ela está visível, e parte do slide fica escondida embaixo dela. A segunda declaração usa a altura realmente disponível; navegadores que não conhecem a unidade ignoram a linha e ficam com o valor anterior.
+
+**Aninhamento nativo de CSS, sem pré-processador.** A folha usa `&` direto no navegador, o que mantém o projeto sem etapa de build — não há nada para compilar antes de abrir o `index.html`.
 
 ## Tecnologias
 
